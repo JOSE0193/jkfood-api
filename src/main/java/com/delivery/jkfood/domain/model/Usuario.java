@@ -16,19 +16,21 @@ import java.util.List;
 public class Usuario {
 
     @Id
+    @EqualsAndHashCode.Include
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String nome;
 
-    @Column
+    @Column(nullable = false)
     private String email;
 
-    @Column
+    @Column(nullable = false)
     private String senha;
 
     @CreationTimestamp
-    @Column(name = "data_cadastro")
+    @Column(nullable = false, name = "datetime")
     private LocalDateTime dataCadastro;
 
     @JsonIgnore
