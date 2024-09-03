@@ -8,10 +8,10 @@ import java.math.BigDecimal;
 public class RestauranteSpecs {
 
     public static Specification<Restaurante> freteGratis() {
-        return ((root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("taxaFrete"), BigDecimal.ZERO));
+        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("taxaFrete"), BigDecimal.ZERO);
     }
 
     public static Specification<Restaurante> nomeSemelhante(String nome) {
-        return ((root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("nome"), "%" + nome +"%"));
+        return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("nome"), "%" + nome +"%");
     }
 }
