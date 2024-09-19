@@ -29,8 +29,8 @@ public enum StatusPedido {
     public static class StatusPedidoConverter implements AttributeConverter<StatusPedido, String> {
 
         @Override
-        public String convertToDatabaseColumn(StatusPedido tipoJulgamento) {
-            return Optional.ofNullable(tipoJulgamento)
+        public String convertToDatabaseColumn(StatusPedido statusPedido) {
+            return Optional.ofNullable(statusPedido)
                     .map(StatusPedido::getValor)
                     .orElse(null);
         }
