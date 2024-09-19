@@ -30,12 +30,8 @@ public class EstadoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> buscar(@PathVariable Long id){
-        Optional<Estado> estadoAtual = repository.findById(id);
-        if(estadoAtual.isPresent()){
-            return ResponseEntity.ok(estadoAtual);
-        }
-        return ResponseEntity.notFound().build();
+    public Estado buscar(@PathVariable Long id){
+        return service.buscar(id);
     }
 
     @PostMapping
@@ -45,25 +41,17 @@ public class EstadoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody Estado estado){
-            Estado estadoAtual = repository.findById(id).orElse(null);
-            if (estadoAtual != null) {
-                BeanUtils.copyProperties(estado, estadoAtual, "id");
-                estadoAtual = service.salvar(estadoAtual);
-                return ResponseEntity.ok(estadoAtual);
-            }
-            return ResponseEntity.notFound().build();
+    public Estado atualizar(@PathVariable Long id, @RequestBody Estado estado){
+        Estado estadoAtual = service.buscar(id);
+        BeanUtils.copyProperties(estado, estadoAtual, "id");
+        estado = service.salvar(estadoAtual);
+
+        return estado;
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> excluir (@PathVariable Long id){
-        try {
-            service.excluir(id);
-            return ResponseEntity.noContent().build();
-        }catch (EntidadeNaoEncontradaException e){
-            return ResponseEntity.notFound().build();
-        }catch (EntidadeEmUsoException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        }
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void excluir (@PathVariable Long id){
+         service.excluir(id);
     }
 }

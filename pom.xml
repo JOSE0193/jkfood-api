@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.7</version>
+		<version>3.3.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jkfood</groupId>
@@ -14,7 +14,7 @@
 	<name>jkfood-api</name>
 	<description>Projeto de API Rest  Delivery de Comidas</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
  <dependencies>
     <dependency>
@@ -39,14 +39,22 @@
     	<groupId>org.springframework.boot</groupId>
     	<artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
-    <dependency>
-    	<groupId>mysql</groupId>
-    	<artifactId>mysql-connector-java</artifactId>
-    	<scope>runtime</scope>
-    </dependency>
+     <dependency>
+         <groupId>com.mysql</groupId>
+         <artifactId>mysql-connector-j</artifactId>
+         <scope>runtime</scope>
+     </dependency>
      <dependency>
          <groupId>org.projectlombok</groupId>
          <artifactId>lombok</artifactId>
+     </dependency>
+     <dependency>
+         <groupId>org.flywaydb</groupId>
+         <artifactId>flyway-mysql</artifactId>
+     </dependency>
+     <dependency>
+         <groupId>org.flywaydb</groupId>
+         <artifactId>flyway-core</artifactId>
      </dependency>
  </dependencies>
   <build>
