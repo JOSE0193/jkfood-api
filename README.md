@@ -28,7 +28,7 @@ O **Jk food API** é uma projeto backend desenvolvido em Spring. Essa API oferec
 ### Pré-requisitos
 - **Java** instalado (17)
 - **IDE com suporte a Maven** Recomendado intellij community
-- **Oracle** rodando localmente
+- **Mysql** rodando localmente
 - **Git** para clonar o repositório
 
 ### Passo a passo
