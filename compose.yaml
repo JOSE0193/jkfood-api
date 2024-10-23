@@ -1,0 +1,14 @@
+services:
+  db:
+    image: mysql:8.0.30
+    container_name: jk-food
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: jk150115
+    ports:
+      - "3306:3306"
+    volumes:
+      - jk_school_data:/var/lib/jk-food
+
+volumes:
+  jk_school_data:

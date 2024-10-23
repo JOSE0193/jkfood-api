@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.delivery.jkfood.domain.exception.EntidadeEmUsoException;
 import com.delivery.jkfood.domain.exception.EntidadeNaoEncontradaException;
 import com.delivery.jkfood.domain.service.CadastroEstadoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,12 +37,12 @@ public class EstadoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Estado adicionar(@RequestBody Estado estado){
+    public Estado adicionar(@RequestBody @Valid Estado estado){
         return service.salvar(estado);
     }
 
     @PutMapping("/{id}")
-    public Estado atualizar(@PathVariable Long id, @RequestBody Estado estado){
+    public Estado atualizar(@PathVariable Long id, @RequestBody @Valid Estado estado){
         Estado estadoAtual = service.buscar(id);
         BeanUtils.copyProperties(estado, estadoAtual, "id");
         estado = service.salvar(estadoAtual);
@@ -50,7 +51,6 @@ public class EstadoController {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void excluir (@PathVariable Long id){
          service.excluir(id);
     }

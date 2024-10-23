@@ -2,11 +2,9 @@ package com.delivery.jkfood.domain.service;
 
 import com.delivery.jkfood.domain.exception.CidadeNaoEncontradoException;
 import com.delivery.jkfood.domain.exception.EntidadeEmUsoException;
-import com.delivery.jkfood.domain.exception.EntidadeNaoEncontradaException;
 import com.delivery.jkfood.domain.model.Cidade;
 import com.delivery.jkfood.domain.model.Estado;
 import com.delivery.jkfood.domain.repository.CidadeRepository;
-import com.delivery.jkfood.domain.repository.EstadoRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;

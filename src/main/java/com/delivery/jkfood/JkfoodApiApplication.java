@@ -1,6 +1,5 @@
 package com.delivery.jkfood;
 
-import com.delivery.jkfood.domain.repository.CustomJpaRepository;
 import com.delivery.jkfood.infrastructure.repository.CustomJpaRepositoryImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

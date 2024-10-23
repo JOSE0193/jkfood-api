@@ -1,6 +1,7 @@
 package com.delivery.jkfood.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.Email;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;
@@ -23,6 +24,7 @@ public class Usuario {
     @Column(nullable = false)
     private String nome;
 
+    @Email
     @Column(nullable = false)
     private String email;
 

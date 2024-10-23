@@ -1,22 +1,17 @@
 package com.delivery.jkfood.api.controller;
 
-import com.delivery.jkfood.domain.exception.EntidadeEmUsoException;
-import com.delivery.jkfood.domain.exception.EntidadeNaoEncontradaException;
 import com.delivery.jkfood.domain.exception.EstadoNaoEncontradoException;
 import com.delivery.jkfood.domain.exception.NegocioException;
 import com.delivery.jkfood.domain.model.Cidade;
-import com.delivery.jkfood.domain.model.Cozinha;
 import com.delivery.jkfood.domain.repository.CidadeRepository;
 import com.delivery.jkfood.domain.service.CadastroCidadeService;
-import com.sun.source.tree.OpensTree;
+import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/cidades")
@@ -37,7 +32,7 @@ public class CidadeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cidade salvar(@RequestBody Cidade cidade){
+    public Cidade salvar(@RequestBody @Valid Cidade cidade){
         try {
             return  service.salvar(cidade);
         } catch (EstadoNaoEncontradoException e) {
@@ -46,7 +41,7 @@ public class CidadeController {
     }
 
     @PutMapping("/{id}")
-    public Cidade atualizar(@PathVariable Long id, @RequestBody Cidade cidade) {
+    public Cidade atualizar(@PathVariable Long id, @RequestBody @Valid Cidade cidade) {
         try {
             Cidade cidadeAtual = service.buscar(id);
             BeanUtils.copyProperties(cidade, cidadeAtual, "id");
